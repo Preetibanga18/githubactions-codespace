@@ -1,0 +1,17 @@
+name: Greet Issue Creators
+
+on:
+  issues:
+    types: [opened, edited]
+
+jobs:
+  greet:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Post a greeting comment
+        uses: peter-evans/create-or-update-comment@v2
+        with:
+          issue-number: ${{ github.event.issue.number }}
+          body: |
+            :wave: Hello @${{ github.actor }}! Thanks for opening this issue. We'll take a look at it shortly and get back to you. 😊
